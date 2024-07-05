@@ -8,6 +8,7 @@ import Campus from "./components/Campus/Campus";
 import Testimonials from "./components/Testimonials/Testimonials";
 import { RecoilRoot } from "recoil";
 import Contact from "./components/Contact/Contact";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
         <Testimonials/>
         <Title subtitle="Contact Us" title="Get in Touch"/>
         <Contact/>
+        <Footer/>
       </div>
       </RecoilRoot>
     </>
