@@ -46,3 +46,45 @@ To run this project locally, follow these steps:
 To start the development server, run:
 ```bash
 npm start
+
+```
+## Deployment
+
+The website is deployed using GitHub Pages. To deploy your own version, follow these steps:
+
+1. Build the project:
+    ```bash
+    npm run build
+    ```
+2. Deploy to GitHub Pages:
+    ```bash
+    npm run deploy
+    ```
+
+Ensure the `homepage` field in your `package.json` is set to `"https://<your-github-username>.github.io/<repository-name>"`.
+
+## Technologies
+
+- **React**: A JavaScript library for building user interfaces.
+- **Vite**: A build tool that provides a fast development experience.
+- **GitHub Pages**: Hosting service for static websites.
+
+## Contributing
+
+Contributions are welcome! Please follow these steps to contribute:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes and commit them (`git commit -m 'Add new feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [GitHub Pages](https://pages.github.com/)
