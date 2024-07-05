@@ -7,6 +7,7 @@ import About from "./components/About/About";
 import Campus from "./components/Campus/Campus";
 import Testimonials from "./components/Testimonials/Testimonials";
 import { RecoilRoot } from "recoil";
+import Contact from "./components/Contact/Contact";
 
 const App = () => {
   return (
@@ -22,6 +23,8 @@ const App = () => {
         <Campus/>
         <Title subtitle="TESTIMONIALS" title="What Student Says"/>
         <Testimonials/>
+        <Title subtitle="Contact Us" title="Get in Touch"/>
+        <Contact/>
       </div>
       </RecoilRoot>
     </>
