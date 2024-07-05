@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import "./Testimonials.css";
 import next_icon from "../../assets/next-icon.png";
 import back_icon from "../../assets/back-icon.png";
@@ -10,13 +10,40 @@ const Testimonials = () => {
     const slider = useRef();
     const [tx, setTx] = useState(0);
     const [moves, setMoves] = useState(0);
-    const movVal = 100 / testimonials.length;
-    const numMoves = testimonials.length - 2;
-   useEffect(()=>{
-    const width = 100* testimonials.length/2;
-    slider.current.style.transform = `translateX(${tx}%)`
-    slider.current.style.width = `${width}%`
-   },[testimonials,tx])
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    const movVal = useMemo(
+        () => 100 / testimonials.length,
+        [testimonials.length]
+    );
+
+    const numMoves = useMemo(() => {
+        return windowWidth > 600
+            ? testimonials.length - 2
+            : testimonials.length - 1;
+    }, [testimonials.length, windowWidth]);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+    useEffect(() => {
+        const width =
+            windowWidth > 700
+                ? (100 * testimonials.length) / 2
+                : 100 * testimonials.length;
+        slider.current.style.transform = `translateX(${tx}%)`;
+        slider.current.style.width = `${width}%`;
+    }, [testimonials.length, tx, windowWidth]);
+
     const slideForward = () => {
         if (moves < numMoves) {
             setTx(tx - movVal);
@@ -46,7 +73,7 @@ const Testimonials = () => {
                 onClick={slideBackward}
             />
             <div className="slider">
-                <ul ref={slider} >
+                <ul ref={slider}>
                     {testimonials.map((testimonial) => (
                         <Testimonial
                             key={testimonial.id}
