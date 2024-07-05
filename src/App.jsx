@@ -9,8 +9,10 @@ import Testimonials from "./components/Testimonials/Testimonials";
 import { RecoilRoot } from "recoil";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
+import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
 
 const App = () => {
+  const [playState, setPlayState] = React.useState(false);
   return (
     <>
       <RecoilRoot>
@@ -19,7 +21,7 @@ const App = () => {
       <div className="container">
         <Title subtitle="OUR PROGRAM" title="What We Offer"/>
         <Programs />
-        <About/>
+        <About setPlayState={setPlayState}/>
         <Title subtitle="Gallery" title="Campus Photos"/>
         <Campus/>
         <Title subtitle="TESTIMONIALS" title="What Student Says"/>
@@ -28,6 +30,7 @@ const App = () => {
         <Contact/>
         <Footer/>
       </div>
+      <VideoPlayer playState={playState} setPlayState={setPlayState}/>
       </RecoilRoot>
     </>
   );
